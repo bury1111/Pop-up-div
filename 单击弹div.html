@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jQuery弹出层效果</title>
+
+
+<script src="jquery-3.3.1.js" type="text/javascript"></script>
+<style>
+#Button1 {
+  width:86px;
+text-align:center;
+line-height:100%;
+padding-top:0.5em;
+padding-right:2em;
+padding-bottom:0.55em;
+padding-left:2em;
+font-family:Arial,sans-serif;
+font-size:14px;
+font-style:normal;
+font-variant:normal;
+font-weight:normal;
+text-decoration:none;
+margin-top:0px;
+margin-right:2px;
+margin-bottom:0px;
+margin-left:2px;
+vertical-align:text-bottom;
+display:inline-block;
+cursor:pointer;
+zoom:1;
+outline-width:medium;
+outline-color:invert;
+font-size-adjust:none;
+font-stretch:normal;
+border-top-left-radius:0.5em;
+border-top-right-radius:0.5em;
+border-bottom-left-radius:0.5em;
+border-bottom-right-radius:0.5em;
+box-shadow:0px 1px 2px rgba(0,0,0,0.2);
+text-shadow:0px 1px 1px rgba(0,0,0,0.3);
+color:#fefee9;
+border-top-color:#da7c0c;
+border-right-color:#da7c0c;
+border-bottom-color:#da7c0c;
+border-left-color:#da7c0c;
+border-top-width:1px;
+border-right-width:1px;
+border-bottom-width:1px;
+border-left-width:1px;
+border-top-style:solid;
+border-right-style:solid;
+border-bottom-style:solid;
+border-left-style:solid;
+background-image:none;
+background-attachment:scroll;
+background-repeat:repeat;
+background-position-x:0%;
+background-position-y:0%;
+background-size:auto;
+background-origin:padding-box;
+background-clip:padding-box;
+background-color:#f47c20;
+}
+.black_overlay{
+display: none;
+position: absolute;
+top: 0%;
+left: 0%;
+width: 100%;
+height: 100%;
+background-color: black;
+z-index:1001;
+-moz-opacity: 0.8;
+opacity:.80;
+filter: alpha(opacity=80);
+}
+.white_content {
+display: none;
+position: absolute;
+top: 10%;
+left: 30%;
+width: 700px;
+height: 500px;
+border: 16px solid lightblue;
+background-color: white;
+z-index:1002;
+overflow: auto;
+}
+</style>
+<script type="text/javascript">
+//弹出隐藏层
+function ShowDiv(show_div,bg_div){
+document.getElementById(show_div).style.display='block';
+document.getElementById(bg_div).style.display='block' ;
+var bgdiv = document.getElementById(bg_div);
+bgdiv.style.width = document.body.scrollWidth;
+// bgdiv.style.height = $(document).height();
+$("#"+bg_div).height($(document).height());
+};
+//关闭弹出层
+function CloseDiv(show_div,bg_div)
+{
+document.getElementById(show_div).style.display='none';
+document.getElementById(bg_div).style.display='none';
+};
+</script>
+</head>
+<body>
+<input id="Button1" type="button" value="点击" onclick="ShowDiv('MyDiv','fade')" /><!--参数为来你哥哥div的id-->
+<!--弹出层时背景层DIV-->
+<div id="fade" class="black_overlay">
+</div>
+<div id="MyDiv" class="white_content">
+<div style="text-align: right; cursor: default; height: 40px;" id="move">
+<span style="font-size: 16px;" onclick="CloseDiv('MyDiv','fade')">关闭</span>
+</div>
+这是弹窗内容
+</div>
+</body>
+</html>
